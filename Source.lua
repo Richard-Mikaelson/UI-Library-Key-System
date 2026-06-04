@@ -2217,9 +2217,7 @@ function IceHub.CreateMain(gameName, subtitle)
                             textBoxStroke.Parent = textBoxButton
                             textBox.FocusLost:Connect(function()
                                 callback(textBox.Text)
-                                wait(0.1)
-                                textBox.Text = ""
-                            end)
+                            end)    
                             newTabPage.CanvasSize = UDim2.new(0, 0, 0, tabPageLayout.AbsoluteContentSize.Y + 5)
                         end,
                         NewSlider = function(_, sliderLabel, minValue, maxValue, callback)
