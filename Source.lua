@@ -1416,62 +1416,8 @@ function IceHub.CreateMain(gameName, subtitle)
     versionLabelCorner.Parent = versionLabel
     
     return {
-        NewMain = function(_, pageName)
-            local mainPage = Instance.new("ScrollingFrame")
-            local mainPageLayout = Instance.new("UIListLayout")
-            local mainEmptyFrame = Instance.new("Frame")
-            table.insert(activePages, mainPage)
-            mainPage.Name = pageName or "MainPage"
-            mainPage.Parent = FrameFolder
-            mainPage.Active = true
-            mainPage.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-            mainPage.BackgroundTransparency = 0.5
-            mainPage.BorderColor3 = Color3.fromRGB(30, 30, 30)
-            mainPage.Position = UDim2.new(0.273000062, 0, 0.160000026, 0)
-            mainPage.Size = UDim2.new(0, 303, 0, 170)
-            mainPage.Visible = false
-            mainPage.CanvasSize = UDim2.new(0, 0, 0, 0)
-            mainPage.ScrollBarThickness = 0
-            mainPage.ScrollingDirection = Enum.ScrollingDirection.Y
-            mainPageLayout.Parent = mainPage
-            mainPageLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
-            mainPageLayout.SortOrder = Enum.SortOrder.LayoutOrder
-            mainPageLayout.Padding = UDim.new(0, 5)
-            mainEmptyFrame.Parent = mainPage
-            mainEmptyFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-            mainEmptyFrame.BackgroundTransparency = 1
-            mainEmptyFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-            mainEmptyFrame.BorderSizePixel = 0
-            mainEmptyFrame.LayoutOrder = -1
-            mainEmptyFrame.Size = UDim2.new(0, 100, 0, 0)
-
-            return {
-                Show = function()
-                    for _, btn in pairs(tabButtonList) do
-                        if btn.BackgroundTransparency ~= 1 then
-                            tweenService:Create(btn, TweenInfo.new(0.2), {
-                                TextColor3 = Color3.fromRGB(255, 255, 255)
-                            }):Play()
-                            tweenService:Create(btn, TweenInfo.new(0.2), {
-                                BackgroundTransparency = 1
-                            }):Play()
-                            tweenService:Create(btn.UIStroke, TweenInfo.new(0.2), {
-                                Transparency = 1
-                            }):Play()
-                        end
-                    end
-                    for _, page in pairs(activePages) do
-                        page.Visible = false
-                    end
-                    mainPage.Visible = true
-                end,
-                Hide = function()
-                    mainPage.Visible = false
-                end,
-                GetPage = function()
-                    return mainPage
-                end
-            }
+        NewMain = function()
+            return {}
         end,
         NewTab = function(_, tabTitle, tabName)
             local newTabPage = Instance.new("ScrollingFrame")
