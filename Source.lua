@@ -1369,6 +1369,8 @@ function IceHub.CreateMain(gameName, subtitle)
     Settings.Position = UDim2.new(0.0149999997, 0, 0.883, 0)
     Settings.Size = UDim2.new(0, 20, 0, 20)
     Settings.ZIndex = 2
+    Settings.Visible = false
+    Settings.Active = false
     Settings.Image = "rbxassetid://3926307971"
     Settings.ImageColor3 = Color3.fromRGB(102, 102, 102)
     Settings.ImageRectOffset = Vector2.new(324, 124)
