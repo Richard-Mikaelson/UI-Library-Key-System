@@ -302,12 +302,12 @@ function IceHub.CreateMain(gameName, subtitle)
     MenuPage.BackgroundTransparency = 0.5
     MenuPage.BorderColor3 = Color3.fromRGB(30, 30, 30)
     MenuPage.Position = UDim2.new(0.266000002, 0, 0.159999996, 0)
-    MenuPage.Size = UDim2.new(0, 303, 0, 170)
-    MenuPage.CanvasSize = UDim2.new(0, 0, 2.9, 0)
+    MenuPage.Size = UDim2.new(0, 303, 0, 175)
+    MenuPage.CanvasSize = UDim2.new(0, 0, 0, 0)
     MenuPage.ScrollBarThickness = 0
-    MenuPage.Visible = true
     MenuPage.ScrollingEnabled = false
     MenuPage.ScrollingDirection = Enum.ScrollingDirection.Y
+    MenuPage.Visible = true
     table.insert(activePages, MenuPage)
     menuPageLayout.Parent = MenuPage
     menuPageLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
@@ -317,7 +317,7 @@ function IceHub.CreateMain(gameName, subtitle)
     local menuButtonCorner = Instance.new("UICorner")
     local menuButtonStroke = Instance.new("UIStroke")
     table.insert(tabButtonList, menuButton)
-    menuButton.Name = "Key System"
+    menuButton.Name = "Menu"
     menuButton.Parent = tabScrollFrame
     menuButton.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
     menuButton.BackgroundTransparency = 0.5
@@ -326,7 +326,7 @@ function IceHub.CreateMain(gameName, subtitle)
     menuButton.Size = UDim2.new(0, 94, 0, 25)
     menuButton.AutoButtonColor = false
     menuButton.Font = Enum.Font.Gotham
-    menuButton.Text = "Key System"
+    menuButton.Text = "Menu"
     menuButton.TextColor3 = buttonColor
     menuButton.TextSize = 12
     menuButtonCorner.CornerRadius = UDim.new(0, 3)
@@ -371,159 +371,341 @@ function IceHub.CreateMain(gameName, subtitle)
         }):Play()
         MenuPage.Visible = true
     end)
-
-    local KeyFrame = Instance.new("Frame")
-    local keyFrameCorner = Instance.new("UICorner")
-    local keyFrameStroke = Instance.new("UIStroke")
-
-    KeyFrame.Name = "KeyFrame"
-    KeyFrame.Parent = MenuPage
-    KeyFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-    KeyFrame.BackgroundTransparency = 0.5
-    KeyFrame.BorderColor3 = Color3.fromRGB(20, 20, 20)
-    KeyFrame.Position = UDim2.new(0.5, 0, 0.266, 0)
-    KeyFrame.Size = UDim2.new(0, 285, 0, 125)
-
-    keyFrameCorner.CornerRadius = UDim.new(0, 4)
-    keyFrameCorner.Parent = KeyFrame
-
-    keyFrameStroke.Color = Color3.fromRGB(39, 39, 39)
-    keyFrameStroke.Thickness = 0.8
-    keyFrameStroke.Parent = KeyFrame
-
-    local KeyInput = Instance.new("TextBox")
-    local keyInputCorner = Instance.new("UICorner")
-    local keyInputStroke = Instance.new("UIStroke")
-
-    KeyInput.Name = "KeyInput"
-    KeyInput.Parent = KeyFrame
-    KeyInput.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-    KeyInput.BackgroundTransparency = 0.3
-    KeyInput.Position = UDim2.new(0.05, 0, 0.15, 0)
-    KeyInput.Size = UDim2.new(0.9, 0, 0, 35)
-    KeyInput.Font = Enum.Font.Gotham
-    KeyInput.PlaceholderText = "Enter your key here..."
-    KeyInput.Text = ""
-    KeyInput.TextColor3 = Color3.fromRGB(255, 255, 255)
-    KeyInput.TextSize = 13
-    KeyInput.ClearTextOnFocus = false
-
-    keyInputCorner.CornerRadius = UDim.new(0, 4)
-    keyInputCorner.Parent = KeyInput
-
-    keyInputStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-    keyInputStroke.Color = Color3.fromRGB(49, 49, 49)
-    keyInputStroke.Transparency = 0.2
-    keyInputStroke.Parent = KeyInput
-
-    local GetKeyBtn = Instance.new("TextButton")
-    local getKeyBtnCorner = Instance.new("UICorner")
-    local getKeyBtnStroke = Instance.new("UIStroke")
-
-    GetKeyBtn.Name = "GetKeyBtn"
-    GetKeyBtn.Parent = KeyFrame
-    GetKeyBtn.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-    GetKeyBtn.BackgroundTransparency = 0.3
-    GetKeyBtn.Position = UDim2.new(0.05, 0, 0.55, 0)
-    GetKeyBtn.Size = UDim2.new(0.425, 0, 0, 30)
-    GetKeyBtn.Font = Enum.Font.Gotham
-    GetKeyBtn.Text = "Get Key"
-    GetKeyBtn.TextColor3 = buttonColor or Color3.fromRGB(255, 255, 255)
-    GetKeyBtn.TextSize = 13
-    GetKeyBtn.AutoButtonColor = false
-
-    getKeyBtnCorner.CornerRadius = UDim.new(0, 4)
-    getKeyBtnCorner.Parent = GetKeyBtn
-
-    getKeyBtnStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-    getKeyBtnStroke.Color = Color3.fromRGB(49, 49, 49)
-    getKeyBtnStroke.Transparency = 0.2
-    getKeyBtnStroke.Parent = GetKeyBtn
-
-    local CheckBtn = Instance.new("TextButton")
-    local checkBtnCorner = Instance.new("UICorner")
-    local checkBtnStroke = Instance.new("UIStroke")
-
-    CheckBtn.Name = "CheckBtn"
-    CheckBtn.Parent = KeyFrame
-    CheckBtn.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-    CheckBtn.BackgroundTransparency = 0.3
-    CheckBtn.Position = UDim2.new(0.525, 0, 0.55, 0)
-    CheckBtn.Size = UDim2.new(0.425, 0, 0, 30)
-    CheckBtn.Font = Enum.Font.Gotham
-    CheckBtn.Text = "Check Key"
-    CheckBtn.TextColor3 = buttonColor or Color3.fromRGB(255, 255, 255)
-    CheckBtn.TextSize = 13
-    CheckBtn.AutoButtonColor = false
-
-    checkBtnCorner.CornerRadius = UDim.new(0, 4)
-    checkBtnCorner.Parent = CheckBtn
-
-    checkBtnStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-    checkBtnStroke.Color = Color3.fromRGB(49, 49, 49)
-    checkBtnStroke.Transparency = 0.2
-    checkBtnStroke.Parent = CheckBtn
-
-    local isCopying = false
-    GetKeyBtn.MouseButton1Click:Connect(function()
-        if isCopying then return end
-        isCopying = true
-        setclipboard("https://link-to-key.com")
-        local originalText = "Get Key"
-        GetKeyBtn.Text = "Link Copied!"
-        task.wait(1.5)
-        GetKeyBtn.Text = originalText
-        isCopying = false
-    end)
-
-    local isChecking = false
-
-    CheckBtn.MouseButton1Click:Connect(function()
-        if isChecking then return end
-        
-        local input = KeyInput.Text
-        
-        if input == "YOUR_SECRET_KEY" then
-            isChecking = true
-            CheckBtn.Text = "Correct Key!"
-            CheckBtn.TextColor3 = Color3.fromRGB(50, 255, 50)
-            task.wait(1.5)
-            task.spawn(function()
-                for _, child in pairs(MainFrame:GetChildren()) do
-                    if child.Name ~= "FrameFolder" and child.Name ~= "UICorner" then
-                        child.Visible = false
-                    end
-                end
-                for _, page in pairs(FrameFolder:GetChildren()) do
-                    if page.Visible then
-                        lastVisiblePage = page
-                    end
-                    page.Visible = false
-                end
-                tweenService:Create(MainFrameShadow, TweenInfo.new(0.45), {
-                    Size = UDim2.new(0, 0, 0, 0)
-                }):Play()
-                tweenService:Create(MainFrame, TweenInfo.new(0.45), {
-                    Size = UDim2.new(0, 0, 0, 0)
-                }):Play()
-                wait(0.45)
-                screenGui:Destroy()
-            end)
-        else
-            isChecking = true
-            local originalText = "Check Key"
-            local originalColor = buttonColor or Color3.fromRGB(255, 255, 255)
-            
-            CheckBtn.Text = "Incorrect Key"
-            CheckBtn.TextColor3 = Color3.fromRGB(255, 50, 50)
-            task.wait(1.5)
-            
-            CheckBtn.Text = originalText
-            CheckBtn.TextColor3 = originalColor
-            isChecking = false
+    LocalFrame.Name = "LocalFrame"
+    LocalFrame.Parent = MenuPage
+    LocalFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+    LocalFrame.BackgroundTransparency = 0.5
+    LocalFrame.BorderColor3 = Color3.fromRGB(20, 20, 20)
+    LocalFrame.Position = UDim2.new(0.5964026392, 0, 0.26649633, 0)
+    LocalFrame.Size = UDim2.new(0, 270, 0, 115)
+    LocalFrame.LayoutOrder = 0
+    localFrameCorner.CornerRadius = UDim.new(0, 4)
+    localFrameCorner.Parent = LocalFrame
+    PlayerImageLabel.Name = "PlayerImageLabel"
+    PlayerImageLabel.Parent = LocalFrame
+    PlayerImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    PlayerImageLabel.BackgroundTransparency = 1
+    PlayerImageLabel.Position = UDim2.new(0.0419999994, 0, 0.0960000008, 0)
+    PlayerImageLabel.Size = UDim2.new(0, 90, 0, 90)
+    if avatarHidden then
+        task.spawn(function()
+            PlayerImageLabel.Image = ""
+        end)
+    elseif avatarHidden == false then
+        task.spawn(function()
+            PlayerImageLabel.Image = game.Players:GetUserThumbnailAsync(game.Players.LocalPlayer.UserId, Enum.ThumbnailType.AvatarBust, Enum.ThumbnailSize.Size420x420) or "rbxasset://textures/ui/GuiImagePlaceholder.png"
+        end)
+    end
+    playerImageCorner.CornerRadius = UDim.new(0, 4)
+    playerImageCorner.Parent = PlayerImageLabel
+    playerImageStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    playerImageStroke.Color = Color3.fromRGB(39, 39, 39)
+    playerImageStroke.Thickness = 0.8
+    playerImageStroke.Transparency = 0.4
+    playerImageStroke.Parent = PlayerImageLabel
+    NameLabel.Name = "NameLabel"
+    NameLabel.Parent = LocalFrame
+    NameLabel.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+    NameLabel.BackgroundTransparency = 0.3
+    NameLabel.BorderColor3 = Color3.fromRGB(20, 20, 20)
+    NameLabel.Position = UDim2.new(0.424561411, 0, 0.0960000008, 0)
+    NameLabel.Size = UDim2.new(0, 140, 0, 28)
+    NameLabel.Font = Enum.Font.SourceSans
+    if usernameHidden ~= false then
+        if usernameHidden then
+            NameLabel.Text = "Hey, [hidden] !"
         end
+    else
+        NameLabel.Text = "Hey, " .. game.Players.LocalPlayer.DisplayName .. " !"
+    end
+    NameLabel.TextColor3 = labelColor
+    NameLabel.TextSize = 14
+    nameLabelCorner.CornerRadius = UDim.new(0, 4)
+    nameLabelCorner.Parent = NameLabel
+    nameLabelStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    nameLabelStroke.Color = Color3.fromRGB(39, 39, 39)
+    nameLabelStroke.Thickness = 0.8
+    nameLabelStroke.Transparency = 0.4
+    nameLabelStroke.Parent = NameLabel
+    Discord = Instance.new("TextButton")
+    discordCorner = Instance.new("UICorner")
+    discordStroke = Instance.new("UIStroke")
+    Discord.Name = "Discord"
+    Discord.Parent = LocalFrame
+    Discord.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+    Discord.BackgroundTransparency = 0.3
+    Discord.BorderColor3 = Color3.fromRGB(20, 20, 20)
+    Discord.Position = UDim2.new(0.424561381, 0, 0.375999987, 0)
+    Discord.Size = UDim2.new(0, 140, 0, 28)
+    Discord.AutoButtonColor = false
+    Discord.Font = Enum.Font.SourceSans
+    Discord.Text = "Join Discord"
+    Discord.TextColor3 = Color3.fromRGB(255, 255, 255)
+    Discord.TextSize = 14
+    Discord.MouseButton1Click:Connect(function()
+        spawn(function()
+            HttpService = game:GetService("HttpService")
+            local httpRequest = syn and syn.request or http and http.request or (http_request or fluxus and fluxus.request or request)
+            if httpRequest then
+                local requestData = {
+                    Url = "http://127.0.0.1:6463/rpc?v=1",
+                    Method = "POST",
+                    Headers = {
+                        ["Content-Type"] = "application/json",
+                        Origin = "https://discord.com"
+                    }
+                }
+                local inviteData = {
+                    cmd = "INVITE_BROWSER",
+                    nonce = HttpService:GenerateGUID(false),
+                    args = {
+                        code = ""
+                    }
+                }
+                requestData.Body = HttpService:JSONEncode(inviteData)
+                httpRequest(requestData)
+            end
+        end)
+        task.spawn(function()
+            local notifyShadow = Instance.new("ImageLabel")
+            local notifyFrame = Instance.new("Frame")
+            local notifyFrameCorner = Instance.new("UICorner")
+            local notifyText = Instance.new("TextLabel")
+            local timerBar = Instance.new("Frame")
+            local timerBarCorner = Instance.new("UICorner")
+            local patternImage = Instance.new("ImageLabel")
+            local notifyStroke = Instance.new("UIStroke")
+            local belowTimerBar = Instance.new("Frame")
+            local belowTimerBarCorner = Instance.new("UICorner")
+            notifyShadow.Name = "NotifyShadow"
+            notifyShadow.Parent = NotifyFolder
+            notifyShadow.AnchorPoint = Vector2.new(1, 1)
+            notifyShadow.BackgroundTransparency = 1
+            notifyShadow.BorderSizePixel = 0
+            notifyShadow.Position = UDim2.new(3, 0, 1, 0)
+            notifyShadow.Size = UDim2.new(0, 278, 0, 123)
+            notifyShadow.ZIndex = -3
+            notifyShadow.Image = "rbxassetid://6014261993"
+            notifyShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+            notifyShadow.ImageTransparency = 0.5
+            notifyShadow.ScaleType = Enum.ScaleType.Slice
+            notifyShadow.SliceCenter = Rect.new(49, 49, 450, 450)
+            notifyFrame.Name = "Notify"
+            notifyFrame.Parent = notifyShadow
+            notifyFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+            notifyFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+            notifyFrame.BackgroundTransparency = 0.15
+            notifyFrame.BorderColor3 = Color3.fromRGB(25, 25, 25)
+            notifyFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+            notifyFrame.Size = UDim2.new(0, 225, 0, 75)
+            notifyFrameCorner.CornerRadius = UDim.new(0, 4)
+            notifyFrameCorner.Parent = notifyFrame
+            notifyText.Name = "NotifyText"
+            notifyText.Parent = notifyFrame
+            notifyText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            notifyText.BackgroundTransparency = 1
+            notifyText.Position = UDim2.new(0.0622222237, 0, 0.106666669, 0)
+            notifyText.Size = UDim2.new(0, 196, 0, 57)
+            notifyText.Font = Enum.Font.Gotham
+            notifyText.Text = "Discord Server link has been copied to clipboard"
+            notifyText.TextColor3 = Color3.fromRGB(255, 255, 255)
+            notifyText.TextSize = 15
+            notifyText.TextWrapped = true
+            notifyText.TextXAlignment = Enum.TextXAlignment.Left
+            notifyText.TextYAlignment = Enum.TextYAlignment.Top
+            timerBar.Name = "TimerBar"
+            timerBar.Parent = notifyFrame
+            timerBar.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+            timerBar.BorderColor3 = Color3.fromRGB(0, 203, 203)
+            timerBar.Position = UDim2.new(0.014, 0, 0.906666696, 0)
+            timerBar.Size = UDim2.new(0, 219, 0, 4)
+            timerBar.ZIndex = 2
+            timerBarCorner.Parent = timerBar
+            patternImage.Name = "Pattern"
+            patternImage.Parent = notifyFrame
+            patternImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            patternImage.BackgroundTransparency = 1
+            patternImage.Size = UDim2.new(0, 224, 0, 72)
+            patternImage.ZIndex = -1
+            patternImage.Image = "rbxassetid://2151741365"
+            patternImage.ImageTransparency = 0.8
+            patternImage.ScaleType = Enum.ScaleType.Tile
+            patternImage.SliceCenter = Rect.new(0, 256, 0, 256)
+            patternImage.TileSize = UDim2.new(0, 250, 0, 250)
+            notifyStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+            notifyStroke.Color = Color3.fromRGB(62, 62, 62)
+            notifyStroke.Transparency = 0.2
+            notifyStroke.Parent = notifyFrame
+            belowTimerBar.Name = "BelowTimeBar"
+            belowTimerBar.Parent = notifyFrame
+            belowTimerBar.BackgroundColor3 = Color3.fromRGB(67, 67, 67)
+            belowTimerBar.BorderColor3 = Color3.fromRGB(67, 67, 67)
+            belowTimerBar.AnchorPoint = Vector2.new(0.5, 0)
+            belowTimerBar.Position = UDim2.new(0.5, 0, 0.906666696, 0)
+            belowTimerBar.Size = UDim2.new(0, 219, 0, 4)
+            belowTimerBarCorner.CornerRadius = UDim.new(0, 4)
+            belowTimerBarCorner.Parent = belowTimerBar
+            tweenService:Create(notifyShadow, TweenInfo.new(0.5), {
+                Position = UDim2.new(1, 0, 1, 0)
+            }):Play()
+            tweenService:Create(timerBar, TweenInfo.new(tonumber(4), Enum.EasingStyle.Linear), {
+                Size = UDim2.new(0, 0, 0, 4)
+            }):Play()
+            task.wait(tonumber(4) - 0.1)
+            timerBar:Destroy()
+            task.wait(0.09)
+            tweenService:Create(notifyShadow, TweenInfo.new(0.5), {
+                Position = UDim2.new(2, 0, 1, 0)
+            }):Play()
+            wait(0.6)
+            notifyShadow:Destroy()
+        end)
+        spawn(function()
+            setclipboard("https://discord.com/invite/")
+        end)
     end)
-
+    local ServerButtonsFrame = Instance.new("Frame")
+    local ServerButtonsCorner = Instance.new("UICorner")
+    local ServerButtonsStroke = Instance.new("UIStroke")
+    local RejoinButton = Instance.new("TextButton")
+    local RejoinCorner = Instance.new("UICorner")
+    local RejoinStroke = Instance.new("UIStroke")
+    local ServerHopButton = Instance.new("TextButton")
+    local ServerHopCorner = Instance.new("UICorner")
+    local ServerHopStroke = Instance.new("UIStroke")
+    ServerButtonsFrame.Name = "ServerButtonsFrame"
+    ServerButtonsFrame.Parent = MenuPage
+    ServerButtonsFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+    ServerButtonsFrame.BackgroundTransparency = 0.5
+    ServerButtonsFrame.BorderColor3 = Color3.fromRGB(20, 20, 20)
+    ServerButtonsFrame.Size = UDim2.new(0, 270, 0, 48)
+    ServerButtonsFrame.LayoutOrder = 1
+    ServerButtonsCorner.CornerRadius = UDim.new(0, 4)
+    ServerButtonsCorner.Parent = ServerButtonsFrame
+    ServerButtonsStroke.Color = Color3.fromRGB(39, 39, 39)
+    ServerButtonsStroke.Thickness = 0.8
+    ServerButtonsStroke.Parent = ServerButtonsFrame
+    RejoinButton.Name = "Rejoin"
+    RejoinButton.Parent = ServerButtonsFrame
+    RejoinButton.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+    RejoinButton.BackgroundTransparency = 0.2
+    RejoinButton.BorderColor3 = Color3.fromRGB(20, 20, 20)
+    RejoinButton.Position = UDim2.new(0, 8, 0, 9)
+    RejoinButton.Size = UDim2.new(0, 122, 0, 30)
+    RejoinButton.AutoButtonColor = false
+    RejoinButton.Font = Enum.Font.Gotham
+    RejoinButton.Text = "Rejoin"
+    RejoinButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+    RejoinButton.TextSize = 13
+    RejoinCorner.CornerRadius = UDim.new(0, 4)
+    RejoinCorner.Parent = RejoinButton
+    RejoinStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    RejoinStroke.Color = Color3.fromRGB(49, 49, 49)
+    RejoinStroke.Transparency = 0.2
+    RejoinStroke.Thickness = 0.8
+    RejoinStroke.Parent = RejoinButton
+    RejoinButton.MouseEnter:Connect(function()
+        tweenService:Create(RejoinButton, TweenInfo.new(0.15), {BackgroundTransparency = 0.1}):Play()
+    end)
+    RejoinButton.MouseLeave:Connect(function()
+        tweenService:Create(RejoinButton, TweenInfo.new(0.15), {BackgroundTransparency = 0.2}):Play()
+    end)
+    RejoinButton.MouseButton1Click:Connect(function()
+        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, game.Players.LocalPlayer)
+    end)
+    ServerHopButton.Name = "ServerHop"
+    ServerHopButton.Parent = ServerButtonsFrame
+    ServerHopButton.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+    ServerHopButton.BackgroundTransparency = 0.2
+    ServerHopButton.BorderColor3 = Color3.fromRGB(20, 20, 20)
+    ServerHopButton.Position = UDim2.new(0, 140, 0, 9)
+    ServerHopButton.Size = UDim2.new(0, 122, 0, 30)
+    ServerHopButton.AutoButtonColor = false
+    ServerHopButton.Font = Enum.Font.Gotham
+    ServerHopButton.Text = "Server-Hop"
+    ServerHopButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+    ServerHopButton.TextSize = 13
+    ServerHopCorner.CornerRadius = UDim.new(0, 4)
+    ServerHopCorner.Parent = ServerHopButton
+    ServerHopStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    ServerHopStroke.Color = Color3.fromRGB(49, 49, 49)
+    ServerHopStroke.Transparency = 0.2
+    ServerHopStroke.Thickness = 0.8
+    ServerHopStroke.Parent = ServerHopButton
+    ServerHopButton.MouseEnter:Connect(function()
+        tweenService:Create(ServerHopButton, TweenInfo.new(0.15), {BackgroundTransparency = 0.1}):Play()
+    end)
+    ServerHopButton.MouseLeave:Connect(function()
+        tweenService:Create(ServerHopButton, TweenInfo.new(0.15), {BackgroundTransparency = 0.2}):Play()
+    end)
+    ServerHopButton.MouseButton1Click:Connect(function()
+        task.spawn(function()
+            local ok, IceHub = pcall(function()
+                return loadstring(game:HttpGet("https://raw.githubusercontent.com/Richard-Mikaelson/Server-Hop/refs/heads/main/Source.lua", true))()
+            end)
+            if ok and IceHub and type(IceHub.ServerHop) == "function" then
+                IceHub:ServerHop()
+            else
+                local TeleportService = game:GetService("TeleportService")
+                local HttpService = game:GetService("HttpService")
+                local placeId = game.PlaceId
+                local currentJobId = game.JobId
+                local cursor = ""
+                local targetId = nil
+                repeat
+                    local data = HttpService:JSONDecode(game:HttpGet(
+                        string.format("https://games.roblox.com/v1/games/%d/Servers/Public?sortOrder=Asc&limit=100&cursor=%s", placeId, cursor),
+                        true
+                    ))
+                    cursor = data.nextPageCursor or ""
+                    for _, Server in ipairs(data.data or {}) do
+                        if Server.id ~= currentJobId and Server.playing < Server.maxPlayers then
+                            targetId = Server.id
+                            break
+                        end
+                    end
+                until targetId ~= nil or cursor == ""
+                if targetId then
+                    TeleportService:TeleportToPlaceInstance(placeId, targetId, game.Players.LocalPlayer)
+                else
+                    TeleportService:Teleport(placeId, game.Players.LocalPlayer)
+                end
+            end
+        end)
+    end)
+    discordCorner.CornerRadius = UDim.new(0, 4)
+    discordCorner.Parent = Discord
+    discordStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    discordStroke.Color = Color3.fromRGB(39, 39, 39)
+    discordStroke.Thickness = 0.8
+    discordStroke.Transparency = 0.4
+    discordStroke.Parent = Discord
+    localFrameStroke.Color = Color3.fromRGB(39, 39, 39)
+    localFrameStroke.Thickness = 0.8
+    localFrameStroke.Parent = LocalFrame
+    menuPageLayout.Name = "UIListLayoutM1"
+    menuPageLayout.Parent = MenuPage
+    menuPageLayout.SortOrder = Enum.SortOrder.LayoutOrder
+    menuPageLayout.Padding = UDim.new(0, 3)
+    menuPagePadding.Name = "UIPaddingM1"
+    menuPagePadding.Parent = MenuPage
+    menuPagePadding.PaddingLeft = UDim.new(0, 5)
+    menuPagePadding.PaddingTop = UDim.new(0, 5)
+    MenuPage.ScrollingEnabled = false
+    menuPageLayout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+        MenuPage.CanvasSize = UDim2.new(0, 0, 0, menuPageLayout.AbsoluteContentSize.Y + 10)
+    end)
+    MenuPage.CanvasSize = UDim2.new(0, 0, 0, menuPageLayout.AbsoluteContentSize.Y + 10)
+    discordCorner.CornerRadius = UDim.new(0, 4)
+    discordCorner.Parent = Discord
+    discordStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    discordStroke.Color = Color3.fromRGB(39, 39, 39)
+    discordStroke.Thickness = 0.8
+    discordStroke.Transparency = 0.4
+    discordStroke.Parent = Discord
+    localFrameStroke.Color = Color3.fromRGB(39, 39, 39)
+    localFrameStroke.Thickness = 0.8
+    localFrameStroke.Parent = LocalFrame
     menuPageLayout.Name = "UIListLayoutM1"
     menuPageLayout.Parent = MenuPage
     menuPageLayout.SortOrder = Enum.SortOrder.LayoutOrder
@@ -531,7 +713,7 @@ function IceHub.CreateMain(gameName, subtitle)
     menuPagePadding.Name = "UIPaddingM1"
     menuPagePadding.Parent = MenuPage
     menuPagePadding.PaddingLeft = UDim.new(0, 5)
-    menuPagePadding.PaddingTop = UDim.new(0, 5)
+    menuPagePadding.PaddingTop = UDim.new(0, 0)
     TutorialPage.Name = "TutorialPage"
     TutorialPage.Parent = FrameFolder
     TutorialPage.Active = true
@@ -1195,8 +1377,7 @@ function IceHub.CreateMain(gameName, subtitle)
     Settings.ImageColor3 = Color3.fromRGB(102, 102, 102)
     Settings.ImageRectOffset = Vector2.new(324, 124)
     Settings.ImageRectSize = Vector2.new(36, 36)
-    Settings.ImageTransparency = 1
-    Settings.Visible = false
+    Settings.ImageTransparency = 0.2
     Settings.MouseButton1Click:Connect(function()
         for _, tabBtn in pairs(tabButtonList) do
             if tabBtn.BackgroundTransparency ~= 1 then
@@ -1235,6 +1416,63 @@ function IceHub.CreateMain(gameName, subtitle)
     versionLabelCorner.Parent = versionLabel
     
     return {
+        NewMain = function(_, pageName)
+            local mainPage = Instance.new("ScrollingFrame")
+            local mainPageLayout = Instance.new("UIListLayout")
+            local mainEmptyFrame = Instance.new("Frame")
+            table.insert(activePages, mainPage)
+            mainPage.Name = pageName or "MainPage"
+            mainPage.Parent = FrameFolder
+            mainPage.Active = true
+            mainPage.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+            mainPage.BackgroundTransparency = 0.5
+            mainPage.BorderColor3 = Color3.fromRGB(30, 30, 30)
+            mainPage.Position = UDim2.new(0.273000062, 0, 0.160000026, 0)
+            mainPage.Size = UDim2.new(0, 303, 0, 170)
+            mainPage.Visible = false
+            mainPage.CanvasSize = UDim2.new(0, 0, 0, 0)
+            mainPage.ScrollBarThickness = 0
+            mainPage.ScrollingDirection = Enum.ScrollingDirection.Y
+            mainPageLayout.Parent = mainPage
+            mainPageLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+            mainPageLayout.SortOrder = Enum.SortOrder.LayoutOrder
+            mainPageLayout.Padding = UDim.new(0, 5)
+            mainEmptyFrame.Parent = mainPage
+            mainEmptyFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            mainEmptyFrame.BackgroundTransparency = 1
+            mainEmptyFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            mainEmptyFrame.BorderSizePixel = 0
+            mainEmptyFrame.LayoutOrder = -1
+            mainEmptyFrame.Size = UDim2.new(0, 100, 0, 0)
+
+            return {
+                Show = function()
+                    for _, btn in pairs(tabButtonList) do
+                        if btn.BackgroundTransparency ~= 1 then
+                            tweenService:Create(btn, TweenInfo.new(0.2), {
+                                TextColor3 = Color3.fromRGB(255, 255, 255)
+                            }):Play()
+                            tweenService:Create(btn, TweenInfo.new(0.2), {
+                                BackgroundTransparency = 1
+                            }):Play()
+                            tweenService:Create(btn.UIStroke, TweenInfo.new(0.2), {
+                                Transparency = 1
+                            }):Play()
+                        end
+                    end
+                    for _, page in pairs(activePages) do
+                        page.Visible = false
+                    end
+                    mainPage.Visible = true
+                end,
+                Hide = function()
+                    mainPage.Visible = false
+                end,
+                GetPage = function()
+                    return mainPage
+                end
+            }
+        end,
         NewTab = function(_, tabTitle, tabName)
             local newTabPage = Instance.new("ScrollingFrame")
             local tabPageLayout = Instance.new("UIListLayout")
@@ -1423,6 +1661,56 @@ function IceHub.CreateMain(gameName, subtitle)
                             end)
                             newTabPage.CanvasSize = UDim2.new(0, 0, 0, tabPageLayout.AbsoluteContentSize.Y + 5)
                         end,
+
+                        NewParagraph = function(_, options)
+                            local titleText = options.Title or ""
+                            local contentText = options.Content or ""
+                            local paragraphFrame = Instance.new("TextButton")
+                            local paragraphCorner = Instance.new("UICorner")
+                            local paragraphStroke = Instance.new("UIStroke")
+                            local titleLabel = Instance.new("TextLabel")
+                            local contentLabel = Instance.new("TextLabel")
+                            paragraphFrame.Name = "cParagraph"
+                            paragraphFrame.Parent = newTabPage
+                            paragraphFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+                            paragraphFrame.BackgroundTransparency = 0.2
+                            paragraphFrame.BorderColor3 = Color3.fromRGB(20, 20, 20)
+                            paragraphFrame.Size = UDim2.new(0, 295, 0, 65)
+                            paragraphFrame.AutoButtonColor = false
+                            paragraphFrame.Text = ""
+                            paragraphCorner.CornerRadius = UDim.new(0, 4)
+                            paragraphCorner.Parent = paragraphFrame
+                            paragraphStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+                            paragraphStroke.Color = Color3.fromRGB(49, 49, 49)
+                            paragraphStroke.Transparency = 0.2
+                            paragraphStroke.Parent = paragraphFrame
+                            titleLabel.Name = "Title"
+                            titleLabel.Parent = paragraphFrame
+                            titleLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                            titleLabel.BackgroundTransparency = 1
+                            titleLabel.Position = UDim2.new(0, 10, 0, 6)
+                            titleLabel.Size = UDim2.new(0, 275, 0, 15)
+                            titleLabel.Font = Enum.Font.GothamBold
+                            titleLabel.Text = titleText
+                            titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+                            titleLabel.TextSize = 13
+                            titleLabel.TextXAlignment = Enum.TextXAlignment.Left
+                            contentLabel.Name = "Content"
+                            contentLabel.Parent = paragraphFrame
+                            contentLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                            contentLabel.BackgroundTransparency = 1
+                            contentLabel.Position = UDim2.new(0, 10, 0, 24)
+                            contentLabel.Size = UDim2.new(0, 275, 0, 35)
+                            contentLabel.Font = Enum.Font.Gotham
+                            contentLabel.Text = contentText
+                            contentLabel.TextColor3 = Color3.fromRGB(170, 170, 170)
+                            contentLabel.TextSize = 12
+                            contentLabel.TextWrapped = true
+                            contentLabel.TextXAlignment = Enum.TextXAlignment.Left
+                            contentLabel.TextYAlignment = Enum.TextYAlignment.Top
+                            newTabPage.CanvasSize = UDim2.new(0, 0, 0, tabPageLayout.AbsoluteContentSize.Y + 5)
+                        end,
+
                         NewSmall = function(_, buttonText, callback)
                             local smallButton = Instance.new("TextButton")
                             local smallButtonCorner = Instance.new("UICorner")
@@ -1996,6 +2284,117 @@ function IceHub.CreateMain(gameName, subtitle)
                             return labelObject
                         end,
                         NewTextBox = function(_, boxLabel, placeholderText, boxName)
+                            local textBoxButton = Instance.new("TextButton")
+                            local textBoxButtonCorner = Instance.new("UICorner")
+                            local helpButton = Instance.new("ImageButton")
+                            local helpButtonCorner = Instance.new("UICorner")
+                            local iconImage = Instance.new("ImageLabel")
+                            local labelText = Instance.new("TextLabel")
+                            local textBox = Instance.new("TextBox")
+                            local textBoxCorner = Instance.new("UICorner")
+                            local textBoxStroke = Instance.new("UIStroke")
+                            textBoxButton.Name = boxName
+                            textBoxButton.Parent = newTabPage
+                            textBoxButton.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+                            textBoxButton.BackgroundTransparency = 0.2
+                            textBoxButton.BorderColor3 = Color3.fromRGB(20, 20, 20)
+                            textBoxButton.Position = UDim2.new(0.0656108633, 0, 0.143239439, 0)
+                            textBoxButton.Size = UDim2.new(0, 295, 0, 30)
+                            textBoxButton.AutoButtonColor = false
+                            textBoxButton.Font = Enum.Font.Gotham
+                            textBoxButton.Text = ""
+                            textBoxButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+                            textBoxButton.TextSize = 12
+                            textBoxButton.TextXAlignment = Enum.TextXAlignment.Left
+                            textBoxButtonCorner.CornerRadius = UDim.new(0, 4)
+                            textBoxButtonCorner.Parent = textBoxButton
+                            helpButton.Name = "Help"
+                            helpButton.Parent = textBoxButton
+                            helpButton.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+                            helpButton.BackgroundTransparency = 1
+                            helpButton.BorderColor3 = Color3.fromRGB(20, 20, 20)
+                            helpButton.Position = UDim2.new(0.901694894, 0, 0.13333334, 0)
+                            helpButton.Size = UDim2.new(0, 23, 0, 23)
+                            helpButton.AutoButtonColor = false
+                            helpButton.Image = "rbxassetid://3926305904"
+                            helpButton.ImageColor3 = Color3.fromRGB(65, 65, 65)
+                            helpButton.ImageRectOffset = Vector2.new(764, 764)
+                            helpButton.ImageRectSize = Vector2.new(36, 36)
+                            helpButtonCorner.CornerRadius = UDim.new(0, 4)
+                            helpButtonCorner.Parent = helpButton
+                            helpButton.MouseButton1Click:Connect(function()
+                                task.spawn(function()
+                                    BlurFrame.Visible = true
+                                    HelpTextLabel.Text = HelpText or ""
+                                    tweenService:Create(helpTextStroke, TweenInfo.new(0.2), {
+                                        Transparency = 0
+                                    }):Play()
+                                    tweenService:Create(BlurFrame, TweenInfo.new(0.2), {
+                                        BackgroundTransparency = 0.6
+                                    }):Play()
+                                    tweenService:Create(HelpTextLabel, TweenInfo.new(0.2), {
+                                        TextTransparency = 0,
+                                        BackgroundTransparency = 0
+                                    }):Play()
+                                    wait(1.5)
+                                    tweenService:Create(helpTextStroke, TweenInfo.new(0.2), {
+                                        Transparency = 1
+                                    }):Play()
+                                    tweenService:Create(BlurFrame, TweenInfo.new(0.2), {
+                                        BackgroundTransparency = 1
+                                    }):Play()
+                                    tweenService:Create(HelpTextLabel, TweenInfo.new(0.2), {
+                                        TextTransparency = 1,
+                                        BackgroundTransparency = 1
+                                    }):Play()
+                                    wait(0.3)
+                                    HelpTextLabel.Text = ""
+                                    BlurFrame.Visible = false
+                                end)
+                            end)
+                            iconImage.Name = "Icon"
+                            iconImage.Parent = textBoxButton
+                            iconImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                            iconImage.BackgroundTransparency = 1
+                            iconImage.Position = UDim2.new(0.026779661, 0, 0.24666667, 0)
+                            iconImage.Rotation = 270
+                            iconImage.Size = UDim2.new(0, 15, 0, 15)
+                            iconImage.Image = "http://www.roblox.com/asset/?id=12596508432"
+                            iconImage.ImageColor3 = Color3.fromRGB(65, 65, 65)
+                            labelText.Name = "Text"
+                            labelText.Parent = textBoxButton
+                            labelText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                            labelText.BackgroundTransparency = 1
+                            labelText.Position = UDim2.new(0.125389799, 0, 0.13333334, 0)
+                            labelText.Size = UDim2.new(0, 102, 0, 22)
+                            labelText.Font = Enum.Font.Gotham
+                            labelText.Text = boxLabel
+                            labelText.TextColor3 = Color3.fromRGB(255, 255, 255)
+                            labelText.TextSize = 13
+                            labelText.TextXAlignment = Enum.TextXAlignment.Left
+                            textBox.Name = "Box"
+                            textBox.Parent = textBoxButton
+                            textBox.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+                            textBox.BackgroundTransparency = 1
+                            textBox.BorderColor3 = Color3.fromRGB(20, 20, 20)
+                            textBox.Position = UDim2.new(0.473479509, 0, 0.149442539, 0)
+                            textBox.Size = UDim2.new(0, 120, 0, 22)
+                            textBox.Font = Enum.Font.Gotham
+                            textBox.PlaceholderColor3 = Color3.fromRGB(178, 178, 178)
+                            textBox.PlaceholderText = placeholderText
+                            textBox.Text = ""
+                            textBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+                            textBox.TextSize = 11
+                            textBox.TextWrapped = true
+                            textBoxCorner.CornerRadius = UDim.new(0, 4)
+                            textBoxCorner.Parent = textBox
+                            textBoxStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+                            textBoxStroke.Color = Color3.fromRGB(49, 49, 49)
+                            textBoxStroke.Transparency = 0.2
+                            textBoxStroke.Parent = textBoxButton
+                            newTabPage.CanvasSize = UDim2.new(0, 0, 0, tabPageLayout.AbsoluteContentSize.Y + 5)
+                        end,
+                       NewTextBox = function(_, boxLabel, placeholderText, boxName)
                             local textBoxButton = Instance.new("TextButton")
                             local textBoxButtonCorner = Instance.new("UICorner")
                             local helpButton = Instance.new("ImageButton")
@@ -2981,5 +3380,138 @@ function IceHub.CreateMain(gameName, subtitle)
             }
         end
     }
+end
+function IceHub:Notify(settings)
+    local title = settings.Title or ""
+    local content = settings.Content or ""
+    local duration = settings.Duration or 4
+    
+    local iceHubGui = game.CoreGui:FindFirstChild("IceHub")
+    local targetFolder = iceHubGui and iceHubGui:FindFirstChild("NotifyFolder")
+    
+    if not targetFolder then
+        if not iceHubGui then
+            iceHubGui = Instance.new("ScreenGui")
+            iceHubGui.Name = "IceHub"
+            iceHubGui.Parent = game.CoreGui
+            iceHubGui.ResetOnSpawn = false
+        end
+        targetFolder = iceHubGui:FindFirstChild("NotifyFolder") or Instance.new("Folder")
+        targetFolder.Name = "NotifyFolder"
+        targetFolder.Parent = iceHubGui
+    end
+    
+    task.spawn(function()
+        local notifyShadow = Instance.new("ImageLabel")
+        local notifyFrame = Instance.new("Frame")
+        local notifyFrameCorner = Instance.new("UICorner")
+        local notifyText = Instance.new("TextLabel")
+        local timerBar = Instance.new("Frame")
+        local timerBarCorner = Instance.new("UICorner")
+        local patternImage = Instance.new("ImageLabel")
+        local notifyStroke = Instance.new("UIStroke")
+        local belowTimerBar = Instance.new("Frame")
+        local belowTimerBarCorner = Instance.new("UICorner")
+        
+        notifyShadow.Name = "NotifyShadow"
+        notifyShadow.Parent = targetFolder
+        notifyShadow.AnchorPoint = Vector2.new(1, 1)
+        notifyShadow.BackgroundTransparency = 1
+        notifyShadow.BorderSizePixel = 0
+        notifyShadow.Position = UDim2.new(3, 0, 1, 0)
+        notifyShadow.Size = UDim2.new(0, 278, 0, 123)
+        notifyShadow.ZIndex = -3
+        notifyShadow.Image = "rbxassetid://6014261993"
+        notifyShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+        notifyShadow.ImageTransparency = 0.5
+        notifyShadow.ScaleType = Enum.ScaleType.Slice
+        notifyShadow.SliceCenter = Rect.new(49, 49, 450, 450)
+        
+        notifyFrame.Name = "Notify"
+        notifyFrame.Parent = notifyShadow
+        notifyFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+        notifyFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+        notifyFrame.BackgroundTransparency = 0.15
+        notifyFrame.BorderColor3 = Color3.fromRGB(25, 25, 25)
+        notifyFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+        notifyFrame.Size = UDim2.new(0, 225, 0, 75)
+        notifyFrameCorner.CornerRadius = UDim.new(0, 4)
+        notifyFrameCorner.Parent = notifyFrame
+        
+        notifyText.Name = "NotifyText"
+        notifyText.Parent = notifyFrame
+        notifyText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        notifyText.BackgroundTransparency = 1
+        notifyText.Position = UDim2.new(0.0622222237, 0, 0.106666669, 0)
+        notifyText.Size = UDim2.new(0, 196, 0, 57)
+        notifyText.Font = Enum.Font.Gotham
+        notifyText.RichText = true
+        
+        if title ~= "" then
+            notifyText.Text = "<b>" .. tostring(title) .. "</b>\n" .. tostring(content)
+        else
+            notifyText.Text = tostring(content)
+        end
+        
+        notifyText.TextColor3 = Color3.fromRGB(255, 255, 255)
+        notifyText.TextSize = 13
+        notifyText.TextWrapped = true
+        notifyText.TextXAlignment = Enum.TextXAlignment.Left
+        notifyText.TextYAlignment = Enum.TextYAlignment.Top
+        
+        timerBar.Name = "TimerBar"
+        timerBar.Parent = notifyFrame
+        timerBar.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+        timerBar.BorderColor3 = Color3.fromRGB(0, 203, 203)
+        timerBar.Position = UDim2.new(0.014, 0, 0.906666696, 0)
+        timerBar.Size = UDim2.new(0, 219, 0, 4)
+        timerBar.ZIndex = 2
+        timerBarCorner.Parent = timerBar
+        
+        patternImage.Name = "Pattern"
+        patternImage.Parent = notifyFrame
+        patternImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        patternImage.BackgroundTransparency = 1
+        patternImage.Size = UDim2.new(0, 224, 0, 72)
+        patternImage.ZIndex = -1
+        patternImage.Image = "rbxassetid://2151741365"
+        patternImage.ImageTransparency = 0.8
+        patternImage.ScaleType = Enum.ScaleType.Tile
+        patternImage.SliceCenter = Rect.new(0, 256, 0, 256)
+        patternImage.TileSize = UDim2.new(0, 250, 0, 250)
+        
+        notifyStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+        notifyStroke.Color = Color3.fromRGB(62, 62, 62)
+        notifyStroke.Transparency = 0.2
+        notifyStroke.Parent = notifyFrame
+        
+        belowTimerBar.Name = "BelowTimeBar"
+        belowTimerBar.Parent = notifyFrame
+        belowTimerBar.BackgroundColor3 = Color3.fromRGB(67, 67, 67)
+        belowTimerBar.BorderColor3 = Color3.fromRGB(67, 67, 67)
+        belowTimerBar.AnchorPoint = Vector2.new(0.5, 0)
+        belowTimerBar.Position = UDim2.new(0.5, 0, 0.906666696, 0)
+        belowTimerBar.Size = UDim2.new(0, 219, 0, 4)
+        belowTimerBarCorner.CornerRadius = UDim.new(0, 4)
+        belowTimerBarCorner.Parent = belowTimerBar
+        
+        local tweenService = game:GetService("TweenService")
+        tweenService:Create(notifyShadow, TweenInfo.new(0.5), {
+            Position = UDim2.new(1, 0, 1, 0)
+        }):Play()
+        tweenService:Create(timerBar, TweenInfo.new(tonumber(duration), Enum.EasingStyle.Linear), {
+            Size = UDim2.new(0, 0, 0, 4)
+        }):Play()
+        
+        task.wait(tonumber(duration) - 0.1)
+        timerBar:Destroy()
+        task.wait(0.09)
+        
+        tweenService:Create(notifyShadow, TweenInfo.new(0.5), {
+            Position = UDim2.new(2, 0, 1, 0)
+        }):Play()
+        task.wait(0.6)
+        notifyShadow:Destroy()
+    end)
 end
 return IceHub
