@@ -307,8 +307,7 @@ function IceHub.CreateMain(gameName, subtitle)
     MenuPage.ScrollBarThickness = 0
     MenuPage.ScrollingEnabled = false
     MenuPage.ScrollingDirection = Enum.ScrollingDirection.Y
-    MenuPage.Visible = true
-    table.insert(activePages, MenuPage)
+    MenuPage.Visible = false
     menuPageLayout.Parent = MenuPage
     menuPageLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
     menuPageLayout.SortOrder = Enum.SortOrder.LayoutOrder
@@ -324,11 +323,8 @@ function IceHub.CreateMain(gameName, subtitle)
     menuButton.BorderColor3 = Color3.fromRGB(20, 20, 20)
     menuButton.Position = UDim2.new(0, 0, 0.0173410401, 0)
     menuButton.Size = UDim2.new(0, 94, 0, 25)
-    menuButton.AutoButtonColor = false
-    menuButton.Font = Enum.Font.Gotham
-    menuButton.Text = "Menu"
-    menuButton.TextColor3 = buttonColor
-    menuButton.TextSize = 12
+    menuButton.Visible = false
+    menuButton.Size = UDim2.new(0, 0, 0, 0)
     menuButtonCorner.CornerRadius = UDim.new(0, 3)
     menuButtonCorner.Parent = menuButton
     menuButtonStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
@@ -1471,6 +1467,22 @@ function IceHub.CreateMain(gameName, subtitle)
             newTabButtonStroke.Transparency = 1
             newTabButtonStroke.Parent = newTabButton
             tabScrollFrame.CanvasSize = UDim2.new(0, 0, 0, tabListLayout.AbsoluteContentSize.Y + 7)
+
+            -- Az első tab alapból aktív legyen
+            local anyVisible = false
+            for _, page in pairs(activePages) do
+                if page.Visible then
+                    anyVisible = true
+                    break
+                end
+            end
+            if not anyVisible then
+                newTabPage.Visible = true
+                newTabButton.BackgroundTransparency = 0.5
+                newTabButton.TextColor3 = labelColor
+                newTabButton.UIStroke.Transparency = 0.2
+            end
+
             newTabButton.MouseButton1Click:Connect(function()
                 if SettingsPage.Visible then
                     SettingsPage.Visible = false
