@@ -763,7 +763,7 @@ function IceHub.CreateMain(gameName, subtitle)
     tutorialImageCorner.Parent = TutorialImage
     SettingsPage.Name = "SettingsPage"
     SettingsPage.Parent = FrameFolder
-    SettingsPage.Active = true
+    SettingsPage.Active = false
     SettingsPage.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
     SettingsPage.BackgroundTransparency = 0.5
     SettingsPage.BorderColor3 = Color3.fromRGB(30, 30, 30)
